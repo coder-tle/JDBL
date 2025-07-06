@@ -1,0 +1,20 @@
+
+create database userdb;
+use userdb;
+create table users( id INT auto_increment primary key,
+name VARCHAR(100) NOT NULL, 
+email VARCHAR(100) NOT NULL);
+
+# avoid double qoutes :??? 
+INSERT INTO users (id, name, email) VALUES( "Sarfaraz", "sarfaraz@gmail.com");
+INSERT INTO users (id, name, email) VALUES( "Joel", "joel@gmail.com");
+INSERT INTO users (id, name, email) VALUES( "Ellie", "ellie@gmail.com");
+INSERT INTO users (id, name, email) VALUES( "Jesse", "jesse@gmail.com");
+INSERT INTO users (id, name, email) VALUES( "Tom", "tom@gmail.com");
+
+
+INSERT INTO users(name, email) VALUES( 'Sarfaraz', 'sarfaraz@gmail.com');
+INSERT INTO users (name, email) VALUES( 'Joel', 'joel@gmail.com');
+INSERT INTO users (name, email) VALUES( 'Ellie', 'ellie@gmail.com');
+INSERT INTO users ( name, email) VALUES( 'Jesse', 'jesse@gmail.com');
+INSERT INTO users ( name, email) VALUES( 'Tom', 'tom@gmail.com');
