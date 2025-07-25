@@ -39,12 +39,12 @@ public class BookController {
 		return new ResponseEntity<>(bookService.addBook(bookDTO), HttpStatus.OK);
 	}
 	
-	@ExceptionHandler(value=BookAlreadyExistsException.class)
-	@ResponseStatus(HttpStatus.CONFLICT)
-	public ErrorResponse handleBookAlreadyException(BookAlreadyExistsException e) {
-		return new ErrorResponse(HttpStatus.CONFLICT.value(), e.getMessage());
-	}
-	
+//	@ExceptionHandler(value=BookAlreadyExistsException.class)
+//	@ResponseStatus(HttpStatus.CONFLICT)
+//	public ErrorResponse handleBookAlreadyException(BookAlreadyExistsException e) {
+//		return new ErrorResponse(HttpStatus.CONFLICT.value(), e.getMessage());
+//	}
+//	
 	
 //	@PostMapping("/{id}")
 //	public ResponseEntity<String> deleteBook(@PathVariable int id) {
