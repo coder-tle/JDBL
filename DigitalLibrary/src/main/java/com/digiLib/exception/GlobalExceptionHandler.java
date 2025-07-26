@@ -14,4 +14,11 @@ public class GlobalExceptionHandler {
     public @ResponseBody ErrorResponse handleBookAlreadyExistsException(BookAlreadyExistsException ex) {
         return new ErrorResponse(HttpStatus.CONFLICT.value(), ex.getMessage());
     }
+    
+    @ExceptionHandler(value = BookNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public @ResponseBody ErrorResponse handleBookNotFoundException(BookNotFoundException ex) {
+    	return new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
+    }
+
 }

@@ -7,8 +7,8 @@ import com.digiLib.entities.Book;
 
 public interface BookService {
 	List<Book> getAllBooks();
-	Book addBook(BookDTO bookDTO0);
-//	void deleteBook(int id);
-//	Book updateBook(int id, Book book);
+	Book addBook(BookDTO bookDTO);
+	String deleteBook(int id);
+	Book updateBook(int id, BookDTO bookDTO);
 //	List<Book> searchBooks(String title, String author, String isbn, String category);
 }

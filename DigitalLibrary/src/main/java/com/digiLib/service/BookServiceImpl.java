@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 import com.digiLib.DTO.BookDTO;
 import com.digiLib.entities.Book;
 import com.digiLib.exception.BookAlreadyExistsException;
+import com.digiLib.exception.BookNotFoundException;
 import com.digiLib.repository.BookRepository;
-import com.digiLib.util.BookNotFoundException;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -42,32 +42,37 @@ public class BookServiceImpl implements BookService {
 		return bookRepo.save(b);
 	}
 
-//	@Override
-//	public void deleteBook(int id) {
-//		// add a log  message
-//		String result = "book not found with id "+id;
+	@Override
+	public String deleteBook(int id) {
+		// add a log  message
+		String result = "book not found with id "+id;
 //		try {
-//			// deleteById() does not throws exceptions
-//			if(bookRepo.findById(id).isPresent()) {
-//				bookRepo.deleteById(id);
-//				
-//			}
-//		}
-//		catch(Exception e){
-//			throw new BookNotFoundException(result);
-//		}
+			// deleteById() does not throws exceptions
+		if(bookRepo.findById(id).isPresent()) {
+			bookRepo.deleteById(id);
+			result = "book deleted with id "+id;
+			return result;
+		}
+		else {
+			throw new BookNotFoundException(result);
+		}
+
+	}
 //
-//	}
-//
-//	@Override //todo
-//	public Book updateBook(int id, Book book) {
+	@Override
+	public Book updateBook(int id, BookDTO book) {
+		Book result = null;
+		if(bookRepo.findById(id)!=null) {
+			result = bookRepo.save(new Book().builder().title(book.getTitle()).author(book.getAuthor()).available(true).category(book.getCategory()).isbn(book.getIsbn()).build());
+		}
+		return result;
 //		if(bookRepo.findById(id).isPresent()) {
 //			bookRepo.deleteById(id);
 //		}
 //		// create a new book & add to it. 
 //		return new Book();
-//	}
-//	
+	}
+	
 //	@Override 
 //	public List<Book> searchBooks(String title, String author, String isbn, String category){
 //		if(isbn!=null && !isbn.isEmpty()) {

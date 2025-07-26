@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,13 +47,13 @@ public class BookController {
 //	}
 //	
 	
-//	@PostMapping("/{id}")
-//	public ResponseEntity<String> deleteBook(@PathVariable int id) {
-//		bookService.deleteBook(id);
+	@PostMapping("/{id}")
+	public ResponseEntity<String> deleteBook(@PathVariable int id) {
+		//bookService.deleteBook(id);
 		//return new ResponseEntity<>("book deleted", HttpStatus.OK);
 		
-//		return new ResponseEntity<>(bookService.deleteBook(id), HttpStatus.OK);
-//	}
+		return new ResponseEntity<String>(bookService.deleteBook(id), HttpStatus.OK);
+	}
 	
 //	@GetMapping("/search")
 //	public List<Book> searchBooks(
@@ -63,6 +64,9 @@ public class BookController {
 //			){
 //		return bookService.serachBooks(title, author, isbn, category);
 //	}
-//	
 	
+	@PutMapping("/{id}")
+	public Book updateBook(@PathVariable int id, @RequestBody BookDTO bookDto) {
+		return bookService.updateBook(id,  bookDto);
+	}
 }

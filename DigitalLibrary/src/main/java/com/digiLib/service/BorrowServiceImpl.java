@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 import com.digiLib.entities.Book;
 import com.digiLib.entities.BorrowRecord;
 import com.digiLib.entities.User;
+import com.digiLib.exception.BookNotFoundException;
 import com.digiLib.repository.BookRepository;
 import com.digiLib.repository.BorrowRecordRepository;
 import com.digiLib.repository.UserRepository;
-import com.digiLib.util.BookNotFoundException;
 
 /*
  * 
