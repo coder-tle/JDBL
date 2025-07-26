@@ -61,11 +61,18 @@ public class BookServiceImpl implements BookService {
 //
 	@Override
 	public Book updateBook(int id, BookDTO book) {
-		Book result = null;
-		if(bookRepo.findById(id)!=null) {
-			result = bookRepo.save(new Book().builder().title(book.getTitle()).author(book.getAuthor()).available(true).category(book.getCategory()).isbn(book.getIsbn()).build());
+		Optional<Book> result = bookRepo.findById(id);
+		
+		if(result.isPresent()) {
+			result.get().setTitle(book.getTitle());
+			result.get().setAuthor(book.getAuthor());
+			result.get().setAvailable(true);
+			result.get().setCategory(book.getCategory());
+			result.get().setIsbn(book.getIsbn());
+			return bookRepo.save(result.get());
+			//result = bookRepo.save(result.get().getTitle(book.getTitle()).geauthor(book.getAuthor()).available(true).category(book.getCategory()).isbn(book.getIsbn()).build());
 		}
-		return result;
+		return result.get();
 //		if(bookRepo.findById(id).isPresent()) {
 //			bookRepo.deleteById(id);
 //		}
