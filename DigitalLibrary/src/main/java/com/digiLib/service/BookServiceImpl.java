@@ -72,7 +72,9 @@ public class BookServiceImpl implements BookService {
 			return bookRepo.save(result.get());
 			//result = bookRepo.save(result.get().getTitle(book.getTitle()).geauthor(book.getAuthor()).available(true).category(book.getCategory()).isbn(book.getIsbn()).build());
 		}
-		return result.get();
+		throw new BookNotFoundException("unable to update as book does not exists");
+		
+		//return result.get();
 //		if(bookRepo.findById(id).isPresent()) {
 //			bookRepo.deleteById(id);
 //		}
