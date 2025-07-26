@@ -55,15 +55,15 @@ public class BookController {
 		return new ResponseEntity<String>(bookService.deleteBook(id), HttpStatus.OK);
 	}
 	
-//	@GetMapping("/search")
-//	public List<Book> searchBooks(
-//			@RequestParam(required=false) String title, 
-//			@RequestParam(required=false) String author,
-//			@RequestParam(required=false) String isbn,
-//			@RequestParam(required=false) String category
-//			){
-//		return bookService.serachBooks(title, author, isbn, category);
-//	}
+	@GetMapping("/search")
+	public List<Book> searchBooks(
+			@RequestParam(required=false) String title, 
+			@RequestParam(required=false) String author,
+			@RequestParam(required=false) String isbn,
+			@RequestParam(required=false) String category
+			){
+		return bookService.searchBooks(title, author, isbn, category);
+	}
 	
 	@PutMapping("/{id}")
 	public Book updateBook(@PathVariable int id, @RequestBody BookDTO bookDto) {

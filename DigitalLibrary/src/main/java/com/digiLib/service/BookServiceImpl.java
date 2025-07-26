@@ -82,24 +82,24 @@ public class BookServiceImpl implements BookService {
 //		return new Book();
 	}
 	
-//	@Override 
-//	public List<Book> searchBooks(String title, String author, String isbn, String category){
-//		if(isbn!=null && !isbn.isEmpty()) {
-//			return bookRepo.findByIsbn(isbn).map(List::of).orElse(Collections.emptyList()); //??
-//			
-//		}
-//		if(title!=null && !title.isEmpty()) {
-//			return bookRepo.findByTitleContainingIgnoreCase(title);
-//		}
-//		if(author!=null && !author.isEmpty()) {
-//			return bookRepo.findByAuthoIgnoreCase(author);
-//		}
-//		if(title!=category && !category.isEmpty()) {
-//			return bookRepo.findByCategoryIgnoreCase(category);
-//		}
-//		return Collections.emptyList();
-//		
-//		
-//	}
+	@Override 
+	public List<Book> searchBooks(String title, String author, String isbn, String category){
+		if(isbn!=null && !isbn.isEmpty()) {
+			return bookRepo.findByIsbn(isbn).map(List::of).orElse(Collections.emptyList()); //??
+			
+		}
+		if(title!=null && !title.isEmpty()) {
+			return bookRepo.findByTitleContainingIgnoreCase(title);
+		}
+		if(author!=null && !author.isEmpty()) {
+			return bookRepo.findByAuthorIgnoreCase(author);
+		}
+		if(title!=category && !category.isEmpty()) {
+			return bookRepo.findByCategoryIgnoreCase(category);
+		}
+		// communicate the user that book was not found ? 
+		return Collections.emptyList();
+		
+	}
 
 }

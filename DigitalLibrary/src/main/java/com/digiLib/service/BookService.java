@@ -10,5 +10,5 @@ public interface BookService {
 	Book addBook(BookDTO bookDTO);
 	String deleteBook(int id);
 	Book updateBook(int id, BookDTO bookDTO);
-//	List<Book> searchBooks(String title, String author, String isbn, String category);
+	List<Book> searchBooks(String title, String author, String isbn, String category);
 }
